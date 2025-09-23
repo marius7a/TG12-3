@@ -39,6 +39,8 @@ auto2.set_kilometerstand(60000)
 auto2.set_baujahr(2020)
 print(auto2)
 
+auto3 = Auto("Morgan","8plus",1700,-10)
+
 # Ungültige Werte testen (lösen Fehler aus)
 try:
     auto2.set_baujahr(1700)

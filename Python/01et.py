@@ -26,7 +26,7 @@ class Klasse:
 
         # TODO Falls der optionale Konstruktor-Parameter benutzt wird,
         # setzen wir ihn als Startwert
-        if p_parameter is not None:
+        if p_parameter !=  None:
             self.__set_zusicherungswert(p_parameter)
 
         # Beispiel: Zähler hochzählen (zeigt Klassenattribut-Nutzung)
@@ -37,15 +37,15 @@ class Klasse:
         # nur intern nutzbar
         self.__privates_attribut += 1
 
-    def _geschuetzte_operation(self):
+    def _geschuetzte_operation(self) -> str:
         # Konvention: nur innerhalb der Klasse/Unterklassen verwenden
         # TODO alle Buchstaben in Grossbuchstaben umwandeln
-        self._geschuetztes_attribut = self._geschuetztes_attribut.upper()
-
+        return self._geschuetztes_attribut.upper()
+                    
     def oeffentliche_operation(self):
         # darf von außen aufgerufen werden
         # TODO private Operation aufrufen
-        self.__private_operation()
+        self.__private_operation() 
         # TODO geschützte Operation aufrufen
         self._geschuetzte_operation()
 
@@ -75,4 +75,21 @@ class Klasse:
         return self.__attribut_mit_zusicherung
     
     # TODO attribut_mit_zusicherung definieren
-    attribut_mit_zusicherung = property(__get_zusicherungswert, None)
+    attribut_mit_zusicherung = property(__get_zusicherungswert,__set_zusicherungswert)
+
+    # Standard-Konstruktor
+x = Klasse()
+x.oeffentliche_operation()
+x.operation1(3)
+print(x.operation2())
+print("Klassenzähler:", Klasse.klassen_operation())
+
+# Konstruktor mit Parameter
+y = Klasse(5)
+print("Zusicherung y:", y.attribut_mit_zusicherung)
+
+# Fehlerbeispiel (Zusicherung verletzt):
+try:
+    y.attribut_mit_zusicherung = 0       # darf nicht
+except ValueError as e:
+    print("Fehler:", e)

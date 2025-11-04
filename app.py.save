@@ -1,0 +1,25 @@
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/api/data', methods=['POST'])
+def get_data():
+    data = request.get_json()
+    marke = data.get('marke')
+    ps = data.get('ps')
+    verbrauch = data.get('verbrauch')
+
+    antwort_text = f"Das Auto {marke} mit {ps} PS verbraucht {verbrauch} Liter/100km."
+
+    return jsonify({
+        "status": "ok",
+        "nachricht": antwort_text
+    })
+
+if __name__ == '__main__':
+    app.run(debug=True)
+

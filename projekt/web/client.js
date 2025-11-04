@@ -1,17 +1,20 @@
-document.getElementById("autoForm").addEventListener("submit", async function(event) {
+document.getElementById("spielerForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const auto = {
-        marke: document.getElementById("marke").value,
-        ps: parseInt(document.getElementById("ps").value),
-        verbrauch: parseFloat(document.getElementById("verbrauch").value)
+    const spieler = {
+        name: document.getElementById("name").value,
+        jahrgang: parseInt(document.getElementById("jahrgang").value),
+        staerke: parseInt(document.getElementById("staerke").value),
+        torschuss: parseInt(document.getElementById("torschuss").value),
+        motivation: parseInt(document.getElementById("motivation").value),
+        position: document.getElementById("position").value,
     };
 
     try {
-        const response = await fetch("/auto", {   // ✅ relativer Pfad statt kompletter URL
+        const response = await fetch("/spieler", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(auto)
+            body: JSON.stringify(spieler)
         });
 
         const data = await response.json();

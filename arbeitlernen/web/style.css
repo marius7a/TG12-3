@@ -1,0 +1,16 @@
+body {
+    font-family: Arial;
+    margin: 40px;
+}
+ 
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
+ 
+input, button {
+    margin-top: 10px;
+    padding: 8px;
+}
+ 

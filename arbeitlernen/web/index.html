@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formular</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <h1>Daten erfassen</h1>
+ 
+    <form id="meinFormular">
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="name" required>
+ 
+        <label for="alter">Alter:</label>
+        <input id="alter" type="number" name="alter" required>
+ 
+        <button type="submit">Senden</button>
+    </form>
+ 
+    <pre id="serverAntwort"></pre>
+ 
+    <script src="client.js"></script>
+</body>
+</html>
+ 

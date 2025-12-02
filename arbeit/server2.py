@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from pydantic import ValidationError
-from model import Spieler
+from model2 import Spieler
 
 app = Flask(__name__)
 
